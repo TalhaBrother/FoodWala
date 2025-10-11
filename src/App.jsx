@@ -5,6 +5,9 @@ import {Route,Routes} from "react-router"
 import './App.css'
 import Recipes from './pages/recipes'
 import Recipe from "./pages/recipe"
+import MuiButton from "./components/MuiButton"
+import Navbar from './components/Navbar'
+import Register from './pages/register'
 
 
 function App() {
@@ -12,9 +15,11 @@ function App() {
 
   return (
     <>
-  <Recipe/>
+
+  <MuiButton/>
     <Routes>
       <Route path='/' element={<Recipes/>}/>
+       <Route path='/register' element={<Register/>}/>
     </Routes>
     
     
