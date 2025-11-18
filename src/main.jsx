@@ -8,15 +8,18 @@ import {
   QueryClientProvider,
   useQuery,
 } from '@tanstack/react-query'
-
+import ThemeContextProvider from "./context/themeContext.jsx"
 export const queryClient = new QueryClient()
 
 createRoot(document.getElementById('root')).render(
   <BrowserRouter>
+  <ThemeContextProvider>
     <QueryClientProvider client={queryClient}>
   <StrictMode>
     <App />
   </StrictMode>
   </QueryClientProvider>
+  </ThemeContextProvider>
+
   </BrowserRouter>
 )

@@ -6,7 +6,7 @@ import { useQuery } from "@tanstack/react-query"
 const Recipe=()=>{
     const {id}=useParams()
     let fetchRecipe=async()=>{
-        let data=await axios.get(`https://dummyjson.com/recipes/search?q=${id}`)
+        let data=await axios.get(`https://dummyjson.com/recipes/${id}`)
         return data.data
     }
       const { isLoading, data } = useQuery({

@@ -19,6 +19,8 @@ function App() {
   <MuiButton/>
     <Routes>
       <Route path='/' element={<Recipes/>}/>
+      <Route path='/recipe/:id' element={<Recipe/>}/>
+
        <Route path='/register' element={<Register/>}/>
     </Routes>
     

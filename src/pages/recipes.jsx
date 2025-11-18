@@ -1,18 +1,23 @@
 import axios from "axios";
-import Recipe from "./recipe";
+import Recipe from "./recipe.jsx";
 import Navbar from "../components/Navbar";
 import { useState } from "react";
 import { useQuery, keepPreviousData } from "@tanstack/react-query";
+import { useContext } from "react";
+import { ThemeContext } from "../context/themeContext";
 
 const Recipes = () => {
     const [search, setSearch] = useState("")
+    const { theme, setTheme } = useContext(ThemeContext);
+    console.log("Current Theme:",theme)
+
     let fetchData = async () => {
         let data = await axios.get(search ? `https://dummyjson.com/recipes/search?q=${search}` : "https://dummyjson.com/recipes")
         return data
 
     }
     const { error, data, isLoading } = useQuery({
-        queryKey: ['repoData'],
+        queryKey: ['repoData',search],
         queryFn: () => fetchData(),
         placeholderData: keepPreviousData
     })
@@ -23,15 +28,16 @@ const Recipes = () => {
     return (
         <>
             <Navbar />
-            <Recipe />
+            {/* <Recipe /> */}
             <div>FoodWala</div>
             <div>
                 <input value={search} onChange={(e) => { setSearch(e.target.value) }} placeholder="Find a Recipe" />
             </div>
+            <button onClick={()=>{setTheme(theme==="light"? "dark" : "light")}}>Toggle Theme</button>
             {isLoading ?
                 <span>Loading.................</span>
                 :
-                <div className="flex w-full flex-wrap">
+                <div className={`${theme==="light"? "flex w-full flex-wrap bg-amber-400" :"flex w-full flex-wrap bg-amber-900"}`}>
                     {data?.data?.recipes?.map((elm) => (
                         <>
                             <div className="flex flex-col justify-center align-center p-3 w-[20%] h-[30rem]">
