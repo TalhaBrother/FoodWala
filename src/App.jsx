@@ -8,6 +8,7 @@ import Recipe from "./pages/recipe"
 import MuiButton from "./components/MuiButton"
 import Navbar from './components/Navbar'
 import Register from './pages/register'
+import NewRecipe from './components/NewRecipe'
 
 
 function App() {
@@ -16,11 +17,11 @@ function App() {
   return (
     <>
 
-  <MuiButton/>
+  {/* <MuiButton/> */}
     <Routes>
       <Route path='/' element={<Recipes/>}/>
       <Route path='/recipe/:id' element={<Recipe/>}/>
-
+      <Route path='/addrecipe' element={<NewRecipe/>}/>
        <Route path='/register' element={<Register/>}/>
     </Routes>
     

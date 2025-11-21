@@ -5,6 +5,9 @@ import { useState } from "react";
 import { useQuery, keepPreviousData } from "@tanstack/react-query";
 import { useContext } from "react";
 import { ThemeContext } from "../context/themeContext";
+import {Routes,Route } from "react-router";
+import NewRecipe from "../components/NewRecipe.jsx";
+
 
 const Recipes = () => {
     const [search, setSearch] = useState("")
@@ -27,7 +30,10 @@ const Recipes = () => {
     if (error) return 'An error has occurred: ' + error.message
     return (
         <>
+       
             <Navbar />
+          
+           
             {/* <Recipe /> */}
             <div>FoodWala</div>
             <div>

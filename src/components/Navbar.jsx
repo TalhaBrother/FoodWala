@@ -13,8 +13,9 @@ import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
 import { Link } from 'react-router';
+import NewRecipe from './NewRecipe';
 
-const pages = [{ name: "Products", link: "./products" }, { name: "Login", link: "./login" }, { name: "Checkout", link: "./register" },];
+const pages = [{ name: "Add Recipe", link: "./addrecipe" }, { name: "Login", link: "./login" }, { name: "Checkout", link: "./register" },];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 function Navbar() {
