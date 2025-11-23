@@ -35,21 +35,23 @@ const Recipes = () => {
           
            
             {/* <Recipe /> */}
-            <div>FoodWala</div>
-            <div>
+            <div className="w-full flex justify-end"><button  onClick={()=>{setTheme(theme==="light"? "dark" : "light")}}>{theme==="light"? "dark" : "light"}</button></div>
+            <div className="w-full">
                 <input value={search} onChange={(e) => { setSearch(e.target.value) }} placeholder="Find a Recipe" />
             </div>
-            <button onClick={()=>{setTheme(theme==="light"? "dark" : "light")}}>Toggle Theme</button>
+            
             {isLoading ?
                 <span>Loading.................</span>
                 :
                 <div className={`${theme==="light"? "flex w-full flex-wrap bg-amber-400" :"flex w-full flex-wrap bg-amber-900"}`}>
                     {data?.data?.recipes?.map((elm) => (
                         <>
-                            <div className="flex flex-col justify-center align-center p-3 w-[20%] h-[30rem]">
-                                <h2 className="text-3xl font-bold">{elm?.name}</h2>
-                                <div className="size-50">  <img src={elm.image}></img></div>
-                                <p>{elm?.ingredients}</p>
+                            <div className="flex flex-col justify-center items-center p-3 lg:w-[20%] sm:w-[50%] h-[25rem] border border-amber-100">
+                                <div  className="text-3xl font-bold mb-[0.5em]"><h2>{elm?.name}</h2></div>
+                                <div className="size-50 mb-[0.5em]">  <img src={elm.image}></img></div>
+                               <div className="w-[90%]"> <p>Category: {elm?.cuisine}</p></div>
+                               <div className="w-[90%]"> <p>Cook time: {elm?.cookTimeMinutes}</p></div>
+                               <div className="w-[90%]"> <p>Difficulty: {elm?.difficulty}</p></div>
                             </div>
 
                         </>
