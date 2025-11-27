@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
+
 
 const NewRecipe = () => {
   const [name, setName] = useState("");
@@ -9,7 +10,7 @@ const NewRecipe = () => {
   const [steps, setSteps] = useState("");
   const [cookTime, setCookTime] = useState("");
   const [difficulty, setDifficulty] = useState("");
-
+const [recipe,setrecipe]=useState([])
   const handleSubmit = async(e) => {
     e.preventDefault();
 
@@ -32,9 +33,19 @@ const NewRecipe = () => {
     console.error(error.message)
   }
   };
+  const getRecipes=async()=>{
+    
+    let data=await axios.get("http://localhost:3000/recipe")
+    let response=data.data.recipes
+    setrecipe(response)
+    console.log(data)
+  }
 
-
+useEffect(()=>{
+  getRecipes()
+},[])
   return (
+    <>
     <div>
       <h2>Add New Recipe</h2>
 
@@ -86,6 +97,12 @@ const NewRecipe = () => {
 
       </form>
     </div>
+    <div>
+    {recipe.map((elm)=>(
+      <div>{elm.name}</div>
+    ))}
+    </div>
+    </>
   );
 };
 

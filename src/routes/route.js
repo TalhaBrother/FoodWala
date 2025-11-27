@@ -2,8 +2,13 @@ import express from "express"
 import Rcp from '../schema/schema.js'
 const recipeRoutes=express.Router()
 
-recipeRoutes.get("/",(req,res)=>{
-    res.send("Fetching All Recipes")
+recipeRoutes.get("/",async(req,res)=>{
+    let recipes=await Rcp.find()
+    res.send({
+        message:"Fetching all recipes",
+        recipes:recipes,
+        code:200
+    })
 })
 recipeRoutes.post("/",async(req,res)=>{
     let rcp=new Rcp(req.body)
